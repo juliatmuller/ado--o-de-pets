@@ -1,9 +1,41 @@
-body{
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 10;
-    background-color: rgb(216, 215, 215);
+body { 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #e5e5e5;
+    margin: 5px;
+    text-align: center;
+     text-align: left;
 }
 
+h2 {
+    color: #333;
+    margin-top: 30px;
+     text-align: center;
+     font-size: xx-large;
+}
+
+.caixa {
+    background-color: #f5f5f5;
+    border: solid #bbb;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+
+    margin: 20px auto;
+}
+
+input {
+    margin: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #555;
+    color: white;
+    border: none;
+}
+
+#resultado {
+    margin-top: 10px;
+    color: #333;
+}
