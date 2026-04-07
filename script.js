@@ -1,7 +1,6 @@
 document.getElementById("formAdocao").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // PEGAR VALORES
     let nome = document.getElementById("nome").value.trim();
     let email = document.getElementById("email").value.trim();
     let telefone = document.getElementById("telefone").value.trim();
