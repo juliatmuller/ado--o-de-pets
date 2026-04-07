@@ -1,0 +1,9 @@
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10;
+    background-color: rgb(216, 215, 215);
+}
+
