@@ -3,19 +3,21 @@ body {
     background-color: #e5e5e5;
     margin: 5px;
     text-align: center;
-     text-align: left;
+    text-align: left;
+    background-image: url(assets/fundo\ marrom.jpg);
 }
 
 h2 {
-    color: #333;
-    margin-top: 30px;
+    color: #ffeeee;
      text-align: center;
      font-size: xx-large;
+    background-color:#5a2a2a;
+    padding: 80px;
 }
 
 .caixa {
-    background-color: #f5f5f5;
-    border: solid #bbb;
+    background-color:#ecdede;
+    border: solid rgb(83, 40, 40);
     padding: 20px;
     border-radius: 10px;
     width: 400px;
@@ -23,13 +25,13 @@ h2 {
 }
 
 input {
-    margin: 5px;
+    margin: 7px;
 }
 
 button {
     margin-top: 10px;
     padding: 8px;
-    background-color: #555;
+    background-color:  rgb(83, 40, 40);
     color: white;
     border: none;
 }
@@ -38,3 +40,11 @@ button {
     margin-top: 10px;
     color: #333;
 }
+
+img{
+       width: 230px;
+    height: 150px;
+
+   
+}
+

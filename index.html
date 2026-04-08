@@ -8,12 +8,16 @@
  <link rel="stylesheet" href="style.css">
 
 
-<h2>~Formulário de Adoção~</h2>
-
-<body>
-
+ 
+ <body>
+   <div class=" img">
+     <h2>~Formulário de Adoção~</h2>
+     <img id="icon" src="assets/transferir.png" alt="dog">
+     
+    </div>
+   
 <div class="caixa">
-    <form id="formAdocao">
+    <form id="formAdocao">  
         <label for="nome">Nome:</label>
         <input type="text" id="nome" placeholder="Digite seu nome... " style="width: 300px;">
         <br>
@@ -77,6 +81,7 @@
    <br>
 
     <div id="resultado"></div>
+    <form onsubmit="return validarFormulario()"></form>
 
     <script src="scripts/script.js"></script>
 </div>
