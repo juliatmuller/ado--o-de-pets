@@ -7,14 +7,6 @@ body {
     background-image: url(assets/fundo\ marrom.jpg);
 }
 
-h2 {
-    color: #ffeeee;
-     text-align: center;
-     font-size: xx-large;
-    background-color:#5a2a2a;
-    padding: 80px;
-}
-
 .caixa {
     background-color:#ecdede;
     border: solid rgb(83, 40, 40);
@@ -41,10 +33,28 @@ button {
     color: #333;
 }
 
-img{
-       width: 230px;
-    height: 150px;
 
-   
+
+img {
+    width: 180px;
+    height: 120px;
+    margin: 1;
 }
+
+nav {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    background-color: rgb(83, 40, 40);
+    position: relative; 
+}
+
+h2 {
+    color: #ffeeee;
+    position: absolute;
+    left: 800px;
+    margin: 0;
+}
+
+
 
