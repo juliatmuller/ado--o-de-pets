@@ -1,142 +1,67 @@
-// Lista de CPFs já cadastrados (simulação)
-const cpfsCadastrados = ["12345678900", "11122233344", "99988877766"];
+document.getElementById("formAdocao").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-function validarFormulario() {
-
-    // Pegando valores
     let nome = document.getElementById("nome").value.trim();
     let email = document.getElementById("email").value.trim();
-    let telefone = document.getElementById("telefone").value.trim();
     let cpf = document.getElementById("cpf").value.trim();
+    let telefone = document.getElementById("telefone").value.trim();
     let idade = parseInt(document.getElementById("idade").value);
     let cidade = document.getElementById("cidade").value.trim();
     let moradia = document.getElementById("moradia").value;
-    let quintal = document.getElementById("quintal").value;
-    let quintalSeguro = document.getElementById("quintalSeguro")?.value;
-    let permiteAnimais = document.getElementById("permiteAnimais")?.value;
-    let tevePet = document.getElementById("tevePet").value;
+    let quintal = document.querySelector('input[name="quintal"]:checked');
+    let pet = document.querySelector('input[name="pet"]:checked');
     let horas = parseFloat(document.getElementById("horas").value);
-    let motivo = document.getElementById("motivo").value.trim();
-    let termo = document.getElementById("termo").checked;
-    let financeiro = document.getElementById("financeiro").value;
-    let decisao = document.getElementById("decisao").value;
+    let motivo = document.getElementById("mensagem").value.trim().toLowerCase();
+    let termo = document.querySelector('input[type="checkbox"]').checked;
 
-    // ===== VALIDAÇÕES TÉCNICAS =====
 
-    if (nome.length < 3) {
-        alert("Nome deve ter pelo menos 3 caracteres");
-        return false;
+    let cpfsExistentes = ["12345678900", "99999999999"];
+
+   
+
+    if (nome.length < 3) return alert("Nome inválido (mínimo 3 caracteres)");
+    if (!email.includes("@")) return alert("Email inválido");
+    if (telefone.length < 8 || isNaN(telefone)) return alert("Telefone inválido");
+    if (cpf === "") return alert("CPF obrigatório");
+    if (cpfsExistentes.includes(cpf)) return alert("CPF já cadastrado!");
+    if (isNaN(idade) || idade < 18) return alert("Obrigatório ter 18 anos ou mais");
+    if (cidade === "") return alert("Cidade obrigatória");
+    if (moradia === "") return alert("Selecione o tipo de moradia");
+    if (!quintal) return alert("Informe se possui quintal");
+    if (!pet) return alert("Informe se já teve pet");
+    if (isNaN(horas) || horas < 0) return alert("Horas inválidas");
+    if (motivo.length < 10) return alert("Motivo muito curto");
+    if (!termo) return alert("Você deve aceitar o termo");
+
+
+    if (moradia === "apartamento" && quintal.value === "sim") {
+        return alert("Apartamento não pode ter quintal");
     }
 
-    if (!email.includes("@")) {
-        alert("Email inválido");
-        return false;
+    if (moradia === "casa" && quintal.value === "nao") {
+        return alert("Casa deve ter quintal adequado/seguro");
     }
 
-    if (telefone.length < 8 || isNaN(telefone)) {
-        alert("Telefone inválido");
-        return false;
-    }
-
-    if (cpf === "") {
-        alert("CPF é obrigatório");
-        return false;
-    }
-
-    if (cpfsCadastrados.includes(cpf)) {
-        alert("CPF já cadastrado!");
-        return false;
-    }
-
-    if (idade < 18) {
-        alert("Você precisa ter 18 anos ou mais para adotar");
-        return false;
-    }
-
-    if (cidade === "") {
-        alert("Cidade é obrigatória");
-        return false;
-    }
-
-    if (moradia === "") {
-        alert("Tipo de moradia é obrigatório");
-        return false;
-    }
-
-    if (quintal === "") {
-        alert("Informe sobre o quintal");
-        return false;
-    }
-
-    if (tevePet === "") {
-        alert("Informe se já teve pet");
-        return false;
-    }
-
-    if (isNaN(horas)) {
-        alert("Informe um número válido de horas");
-        return false;
-    }
-
-    if (motivo.length < 10) {
-        alert("Motivo deve ter pelo menos 10 caracteres");
-        return false;
-    }
-
-    if (!termo) {
-        alert("Você deve aceitar o termo");
-        return false;
-    }
-
-    // ===== REGRAS DE NEGÓCIO =====
-
-    // Moradia
-    if (moradia === "apartamento" && !permiteAnimais) {
-        alert("Informe se o apartamento permite animais");
-        return false;
-    }
-
-    if (moradia === "casa" && !quintalSeguro) {
-        alert("Informe se o quintal é seguro");
-        return false;
-    }
-
-    // Coerência
-    if (moradia === "apartamento" && quintal === "sim") {
-        alert("Apartamento não pode ter quintal");
-        return false;
-    }
-
-    // Horas sozinho
     if (horas > 8) {
-        let confirmacao = confirm("O animal ficará muito tempo sozinho. Deseja continuar?");
-        if (!confirmacao) return false;
+        alert("Atenção: o animal ficará muito tempo sozinho!");
     }
 
-    // Nunca teve pet
-    if (tevePet === "nao") {
-        alert("A ONG poderá acompanhar sua adaptação com o pet");
+    if (pet.value === "nao") {
+        alert("A ONG poderá acompanhar sua adaptação");
     }
 
-    // Motivo genérico
-    let motivosInvalidos = ["quero", "porque sim", "sim"];
-    if (motivosInvalidos.includes(motivo.toLowerCase())) {
-        alert("Motivo muito genérico. Seja mais específico");
-        return false;
+    let motivosInvalidos = ["quero", "porque sim", "porque eu quero"];
+    if (motivosInvalidos.includes(motivo)) {
+        return alert("Motivo inválido, seja mais específico");
     }
 
-    // Condição financeira
-    if (financeiro === "nao") {
-        alert("Sem condições financeiras para manter o pet");
-        return false;
-    }
 
-    // Decisão impulsiva
-    if (decisao === "hoje") {
-        alert("Atenção: adoção por impulso pode não ser ideal");
-    }
-
-    // SUCESSO
-    alert("Formulário enviado com sucesso!");
-    return true;
-}
+    document.getElementById("resultado").innerHTML =
+        "✅ Cadastro realizado com sucesso!<br><br>" +
+        "<strong>Nome:</strong> " + nome + "<br>" +
+        "<strong>Email:</strong> " + email + "<br>" +
+        "<strong>Telefone:</strong> " + telefone + "<br>" +
+        "<strong>Cidade:</strong> " + cidade + "<br>" +
+        "<strong>Moradia:</strong> " + moradia + "<br>" +
+        "<strong>Horas sozinho:</strong> " + horas + "h";
+});

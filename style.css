@@ -5,7 +5,9 @@ body {
     text-align: center;
     text-align: left;
     background-image: url(assets/fundo\ marrom.jpg);
-
+ background-position: 0%;
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 
 .caixa {
@@ -31,7 +33,12 @@ button {
 
 #resultado {
     margin-top: 10px;
-    color: #333;
+    color: #ecdede;
+      border: solid rgb(83, 40, 40);
+      background-color: rgb(83, 40, 40);
+          width: 400px;
+    margin: 20px auto;
+        height: 200px;
 }
 
 
@@ -53,7 +60,7 @@ nav {
 h2 {
     color: #ffeeee;
     position: absolute;
-    left: 800px;
+    left: 720px;
     margin: 0;
 }
 
